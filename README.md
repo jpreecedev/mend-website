@@ -1,15 +1,24 @@
-# Mend website
+# Mend
 
-The website for **Mend** — a free, open-source Chrome extension that helps you find accessibility issues on any page and shows you how to fix them.
+**Find what's broken on your page, and exactly how to fix it.**
 
-## What's here
+Mend is a free, open-source Chrome extension that audits the page you're viewing against WCAG. It shows you what's wrong, where it lives, and how to fix it — in plain language, with nothing sent off your device.
 
-- **Home** — what Mend is and how it works
-- **Privacy** — privacy policy
-- **Support** — FAQ and how to get help
+[**Add to Chrome**](https://chromewebstore.google.com/detail/mend-accessibility-audit/iihcbcolbnbbccohpcendeneofimpcmo)
 
-Before publishing, update the placeholder links and contact details in the HTML files (GitHub, Chrome Web Store, email, and the privacy policy date).
+## What you get
+
+- **Fix-first guidance** — every issue leads with what to change, not a wall of rule IDs
+- **Plain-language explanations** — hand-written docs with before/after examples where we've covered the rule
+- **Runs on your machine** — no accounts, no API keys, no telemetry
+- **Side panel workflow** — open Mend beside any tab, run an audit, highlight issues on the page
+
+## Site
+
+This repo is the static marketing site: home, [privacy policy](privacy.html), and [support](support.html).
+
+Extension source: [github.com/jpreecedev/mend-a11y](https://github.com/jpreecedev/mend-a11y)
 
 ## License
 
-MIT License — same as the Mend extension.
+MIT
