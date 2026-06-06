@@ -218,7 +218,7 @@ code, kbd, pre { font-family: var(--font-mono); }
   display: flex;
   align-items: center;
   gap: .35rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .site-nav a {
   display: inline-flex;
@@ -410,7 +410,6 @@ code, kbd, pre { font-family: var(--font-mono); }
   font-size: .82rem; color: var(--pass-text);
   background: var(--pass-bg); border-radius: var(--r-sm);
   padding: .4rem .55rem; margin: 0;
-  display: flex; gap: .4rem;
 }
 .panel-issue__fix b { color: var(--pass-text); }
 
@@ -528,7 +527,6 @@ code, kbd, pre { font-family: var(--font-mono); }
   border: 1px solid var(--border);
   border-radius: var(--r);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
 }
 .faq summary {
   list-style: none;
@@ -539,19 +537,35 @@ code, kbd, pre { font-family: var(--font-mono); }
   display: flex;
   align-items: center;
   gap: .75rem;
+  border-radius: var(--r);
+}
+/* Inset ring — parent overflow would clip the global outline-offset */
+.faq summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary .q-icon {
   margin-left: auto;
   flex: none;
   width: 26px; height: 26px;
-  display: grid; place-items: center;
+  position: relative;
   border-radius: 50%;
   background: var(--accent-soft);
   color: var(--accent-text);
   transition: transform .2s ease;
-  font-size: 1.1rem; line-height: 1;
 }
+.faq summary .q-icon::before,
+.faq summary .q-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  background: currentColor;
+  border-radius: 1px;
+}
+.faq summary .q-icon::before { width: 10px; height: 2px; }
+.faq summary .q-icon::after  { width: 2px; height: 10px; }
 .faq details[open] summary .q-icon { transform: rotate(45deg); }
 .faq .faq__body { padding: 0 1.2rem 1.15rem; color: var(--muted); }
 .faq .faq__body p { margin: 0; }
@@ -574,6 +588,26 @@ code, kbd, pre { font-family: var(--font-mono); }
 
 /* ---- Responsive --------------------------------------------------- */
 @media (max-width: 719px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    min-height: auto;
+    padding-block: .65rem;
+    row-gap: .5rem;
+  }
+  .site-nav {
+    flex: 1 1 100%;
+    justify-content: space-between;
+    gap: .25rem;
+  }
+  .site-nav a {
+    flex: 1 1 0;
+    justify-content: center;
+    padding-inline: .35rem;
+    font-size: .84rem;
+    min-height: 40px;
+    white-space: nowrap;
+  }
+
   .hero__art-inner { min-height: 0; width: 100%; max-width: 360px; }
   .hero__pip { width: 200px; margin: 0 auto; }
   .panel-mock--float { position: static; width: 100%; max-width: 320px; margin: -1rem auto 0; }
